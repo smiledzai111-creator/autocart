@@ -35,11 +35,11 @@ public class CartBombClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-        triggerKey = KeyBindingHelper.registerKeyMapping(new KeyMapping(
+        triggerKey = KeyBindingHelper.register(new KeyMapping(
                 "key.cartbomb.trigger",
                 InputConstants.Type.KEYSYM,
                 GLFW.GLFW_KEY_K,
-                KeyMapping.CATEGORY_MISC
+                "key.categories.misc"
         ));
 
         ClientTickEvents.END_CLIENT_TICK.register(this::onTick);
