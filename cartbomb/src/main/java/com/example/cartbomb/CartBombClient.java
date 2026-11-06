@@ -3,7 +3,7 @@ package com.example.cartbomb;
 import com.mojang.blaze3d.platform.InputConstants;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
-import net.fabricmc.fabric.api.client.keymapping.v1.KeyMappingHelper;
+import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
@@ -20,12 +20,11 @@ import org.lwjgl.glfw.GLFW;
 
 public class CartBombClient implements ClientModInitializer {
 
-    // Thoi gian theo tick (20 tick = 1 giay)
     private static final int T_PLACE_RAIL = 0;
     private static final int T_DRAW_BOW   = 1;
-    private static final int T_RELEASE    = 11; // ~0.5 giay keo cung
+    private static final int T_RELEASE    = 11;
     private static final int T_MINECART   = 16;
-    private static final int T_FINISH     = 20; // tong 1 giay
+    private static final int T_FINISH     = 20;
 
     private static KeyMapping triggerKey;
 
@@ -40,7 +39,8 @@ public class CartBombClient implements ClientModInitializer {
                 "key.cartbomb.trigger",
                 InputConstants.Type.KEYSYM,
                 GLFW.GLFW_KEY_K,
-                "key.categories.misc"));
+                KeyMapping.CATEGORY_MISC
+        ));
 
         ClientTickEvents.END_CLIENT_TICK.register(this::onTick);
     }
