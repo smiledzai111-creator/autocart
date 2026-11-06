@@ -20,13 +20,15 @@ jobs:
         distribution: 'temurin'
 
     - name: Grant execute permission for gradlew
-      run: chmod +x gradlew || true
+      run: chmod +x gradlew
+      working-directory: ./cartbomb
 
     - name: Build with Gradle
       run: ./gradlew build
+      working-directory: ./cartbomb
 
     - name: Upload Build Artifact
       uses: actions/upload-artifact@v4
       with:
         name: mod-jar-file
-        path: build/libs/*.jar
+        path: cartbomb/build/libs/*.jar
