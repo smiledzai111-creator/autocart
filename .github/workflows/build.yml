@@ -20,7 +20,7 @@ jobs:
         distribution: 'temurin'
 
     - name: Generate Gradle Wrapper
-      run: gradle wrapper --gradle-version 8.8
+      run: gradle wrapper --gradle-version 9.2.0
       working-directory: cartbomb
 
     - name: Grant execute permission for gradlew
