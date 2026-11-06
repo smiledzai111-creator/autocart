@@ -39,7 +39,7 @@ public class CartBombClient implements ClientModInitializer {
                 "key.cartbomb.trigger",
                 InputConstants.Type.KEYSYM,
                 GLFW.GLFW_KEY_K,
-                "key.categories.misc"
+                "key.category.cartbomb"
         ));
 
         ClientTickEvents.END_CLIENT_TICK.register(this::onTick);
