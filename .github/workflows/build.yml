@@ -19,28 +19,11 @@ jobs:
         java-version: '21'
         distribution: 'temurin'
 
-    - name: Generate Gradle Wrapper and Build
-      run: |
-        # Tìm thư mục chứa file build.gradle
-        BUILD_FILE=$(find . -name "build.gradle" -type f | head -n 1)
-        if [ -z "$BUILD_FILE" ]; then
-          echo "Không tìm thấy file build.gradle!"
-          exit 1
-        fi
-        PROJECT_DIR=$(dirname "$BUILD_FILE")
-        echo "Đã tìm thấy dự án tại: $PROJECT_DIR"
-        
-        cd "$PROJECT_DIR"
-        
-        # Tự sinh ra gradlew nếu chưa có
-        gradle wrapper
-        chmod +x gradlew
-        
-        # Tiến hành build
-        ./gradlew build
+    - name: Build with Gradle
+      run: ./gradlew build
 
     - name: Upload Build Artifact
       uses: actions/upload-artifact@v4
       with:
         name: mod-jar-file
-        path: "**/build/libs/*.jar"
+        path: build/libs/*.jar
