@@ -11,12 +11,12 @@ public class CartBombClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-        // Đăng ký phím tắt (Ví dụ: phím R)
+        // Đăng ký phím tắt với danh mục chuẩn
         triggerKey = KeyBindingHelper.registerKeyMapping(new KeyMapping(
             "key.cartbomb.trigger",
             InputConstants.Type.KEYSYM,
             GLFW.GLFW_KEY_R,
-            "category.cartbomb.main"
+            "key.categories.misc"
         ));
     }
 }
